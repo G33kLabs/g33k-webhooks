@@ -75,7 +75,9 @@ gith().on( 'all', function( payload ) {
 			var post_commit = spawn('/bin/sh', [postCommit]); 
 
 			// Pipe logs
+			post_commit.stdout.setEncoding('utf8');
 			post_commit.stdout.on('data', winston.debug);
+			post_commit.stderr.setEncoding('utf8');
 			post_commit.stderr.on('data', winston.debug);
 
 			// On close
