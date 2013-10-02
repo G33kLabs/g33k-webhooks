@@ -1,1 +1,1 @@
-gith: node src/app.js
+webhooks: node src/app.js
