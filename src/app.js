@@ -6,7 +6,7 @@ var path = require('path')
   , find = require('findit')
   , version = pkg.version
   , exec = require('child_process').exec
-  , span = require('child_process').span
+  , spawn = require('child_process').spawn
   , opts = require('optimist')
 	.usage('Usage: $0')
 	.options({
