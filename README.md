@@ -77,7 +77,7 @@ Actually the webhooks server listen to all messages.
 
 In order to execute a post-commit script, you have to build directory into '/repos/' folder.
 
-By example, for https://github.com/G33kLabs/g33k-webhooks, you will have to create the folders '/repos/G33kLabs/g33k-webhooks' (case sensitive).
+By example, for the repositary https://github.com/G33kLabs/g33k-webhooks, you will have to create the folders '/repos/G33kLabs/g33k-webhooks' (case sensitive).
 
 And in this folder, copy the sampled file 'post-commit' and customize it.
 
