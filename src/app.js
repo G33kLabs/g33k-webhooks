@@ -55,8 +55,8 @@ var repos = [] ;
 gith().on( 'all', function( payload ) {
 
 	// Debug payload
-	winston.warn('[>] Post-commit happened!');
-	winston.info(JSON.stringify(payload, null, 4)); 
+	winston.warn('[>] Post-commit happened on '+payload.repo+' !');
+	//winston.info(JSON.stringify(payload, null, 4)); 
 
 	// Set post-commit script path
 	var postCommit = path.resolve('./repos/'+payload.repo+'/post-commit');
@@ -73,7 +73,7 @@ gith().on( 'all', function( payload ) {
 
 		// Run
 		execute: function(next) {
-			exec(postCommit, function(err, datas) {
+			exec("/bin/sh " + postCommit, function(err, datas) {
 				console.log(err, datas) ;
 			});
 		}
