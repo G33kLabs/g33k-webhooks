@@ -22,6 +22,11 @@ npm update
 sudo iptables -t filter -A INPUT -p tcp --dport 9090 -j ACCEPT
 ```
 
+### Usage
+```
+node src/app.js -h
+```
+
 ### Test
 ```
 node src/app.js -p 9090
