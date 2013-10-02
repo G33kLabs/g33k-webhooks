@@ -4,7 +4,7 @@ unset GIT_DIR
 
 #@ Make a npm update
 echo "Update npm packages..."
-npm update
+npm update > /dev/null 2>&1 
 
 #@ Refresh repo
 echo "Refresh repo..."
