@@ -70,8 +70,8 @@ tail -f /var/log/webhooks/*
 ```
 
 
-Create post-commit
-------------------
+Create post-commit hook
+-----------------------
 
 Actually the webhooks server listen to all messages.
 
