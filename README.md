@@ -53,6 +53,7 @@ sudo foreman export upstart /etc/init -a webhooks -u g33k -c webhooks=1
 export EDITOR=vi
 sudo visudo
 %user ALL=(ALL) NOPASSWD: /usr/sbin/service webhooks restart, /usr/sbin/service webhooks stop, /usr/sbin/service webhooks start
+```
 
 ### Start service 
 ```
