@@ -59,7 +59,7 @@ gith().on( 'all', function( payload ) {
 	winston.info(JSON.stringify(payload, null, 4)); 
 
 	// Set post-commit script path
-	var postCommit = './repos/'+payload.repo+'/post-commit';
+	var postCommit = '../repos/'+payload.repo+'/post-commit';
 
 	// Find post-commit script and exec it
 	async.series({
