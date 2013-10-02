@@ -55,7 +55,7 @@ gith().on( 'all', function( payload ) {
 
 	// Debug payload
 	winston.info('Post-receive happened!');
-	winston.info(JSON.stringify(payload, null, 4); 
+	winston.info(JSON.stringify(payload, null, 4)); 
 
 /*
 	// Exec post-receive script
