@@ -8,7 +8,7 @@ Update Git repositary via WebHooks Server
 ### Clone Repo
 ```
 cd /var/www
-git clone 
+git clone git@github.com:G33kLabs/g33k-webhooks.git
 ```
 
 ### Update NPM
@@ -60,7 +60,7 @@ sudo visudo
 sudo service webhooks start
 ```
 
-## Watch logs
+### Watch logs
 ```
 tail -f /var/log/webhooks/*
 ```
