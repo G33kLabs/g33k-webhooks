@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /var/www/sample-project
+cd /var/www/g33k-webhooks
 unset GIT_DIR
 
 #@ Make a npm update
@@ -9,3 +9,7 @@ npm update
 #@ Refresh repo
 echo "Refresh repo..."
 git pull
+
+#@ Restart app
+echo "Restart webhook server..."
+sudo service webhooks restart

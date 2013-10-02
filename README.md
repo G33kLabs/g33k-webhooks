@@ -48,7 +48,7 @@ cd /var/www/g33k-webhooks
 sudo foreman export upstart /etc/init -a webhooks -u g33k -c webhooks=1
 ```
 
-### Allow a user to restart the service
+### Allow a user to restart the service without password
 ```
 export EDITOR=vi
 sudo visudo

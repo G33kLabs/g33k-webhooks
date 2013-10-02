@@ -50,12 +50,18 @@ winston.info('[>] WebHooks Server listening on port '+opts.port);
 // List repositaries
 var repos = [] ;
 
-// Bind post-commit hooks
+// Bind post-commit hooks without filters
 gith().on( 'all', function( payload ) {
 
 	// Debug payload
-	winston.info('Post-receive happened!');
+	winston.warn('[>] Post-receive happened!');
 	winston.info(JSON.stringify(payload, null, 4)); 
+
+	// Look if post-receive script exists
+	fs.exists('./repos/'+payload.repo+'/post-receive', function(exists) {
+		winston.info('post-commit script exists for '+payload.repo); 
+		
+	}); 
 
 /*
 	// Exec post-receive script
