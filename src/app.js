@@ -48,9 +48,6 @@ var gith = require('gith').create(opts.port) ;
 // Log
 winston.info('[>] WebHooks Server listening on port '+opts.port); 
 
-// List repositaries
-var repos = [] ;
-
 // Bind post-commit hooks without filters
 gith().on( 'all', function( payload ) {
 
@@ -73,8 +70,10 @@ gith().on( 'all', function( payload ) {
 
 		// Run
 		execute: function(next) {
+			winston.info('[>] Launch post-commit : '+postCommit); 
 			exec("/bin/sh " + postCommit, function(err, datas) {
 				console.log(err, datas) ;
+				next(err, datas);
 			});
 		}
 	},
