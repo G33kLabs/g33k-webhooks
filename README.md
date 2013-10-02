@@ -3,7 +3,9 @@ g33k-webhooks
 
 Update Git repositary via WebHooks Server
 
-## Install on Server
+
+Install on Server
+-----------------
 
 ### Clone Repo
 ```
@@ -32,7 +34,9 @@ node src/app.js -h
 node src/app.js -p 9090
 ```
 
-## InitScript with foreman (optional)
+
+InitScript with foreman (optional)
+----------------------------------
 
 ### Create .env
 
@@ -65,3 +69,31 @@ sudo service webhooks start
 tail -f /var/log/webhooks/*
 ```
 
+
+Create post-commit
+------------------
+
+Actually the webhooks server listen to all messages.
+In order to execute a post-commit script, you have to build directory into '/repos/' folder.
+By example, for https://github.com/G33kLabs/g33k-webhooks, you will have to create the folders '/repos/G33kLabs/g33k-webhooks' (case sensitive).
+And in this folder, copy the sampled file 'post-commit' and customize it.
+
+You'll find below the sample file: 
+
+```
+#!/bin/sh
+cd /var/www/g33k-webhooks
+unset GIT_DIR
+
+#@ Make a npm update
+echo "Update npm packages..."
+npm update > /dev/null 2>&1 
+
+#@ Refresh repo
+echo "Refresh repo..."
+git pull
+
+#@ Restart app
+echo "Restart webhook server..."
+sudo service webhooks restart
+```
