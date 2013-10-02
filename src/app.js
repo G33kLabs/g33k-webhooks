@@ -67,7 +67,7 @@ gith().on( 'all', function( payload ) {
 		// Search for post-commit script
 		exists: function(next) {
 			fs.exists(postCommit, function(exists) {
-				next('No post-commit found for '+postCommit);
+				next(!exists?'No post-commit found for '+postCommit:null);
 			});
 		},
 
