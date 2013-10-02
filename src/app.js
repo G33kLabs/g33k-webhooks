@@ -1,6 +1,7 @@
 var path = require('path')
   , pkg = require('../package.json')
   , fs = require('fs')
+  , async = require('async')
   , winston = require('winston')
   , find = require('findit')
   , version = pkg.version
