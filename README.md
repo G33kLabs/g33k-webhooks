@@ -57,3 +57,9 @@ sudo service webhooks start
 ```
 tail -f /var/log/webhooks/*
 ```
+
+## Allow a user to restart the service
+```
+export EDITOR=vi
+sudo visudo
+%user ALL=(ALL) NOPASSWD: /usr/sbin/service webhooks restart, /usr/sbin/service webhooks stop, /usr/sbin/service webhooks start
