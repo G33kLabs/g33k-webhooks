@@ -48,6 +48,12 @@ cd /var/www/g33k-webhooks
 sudo foreman export upstart /etc/init -a webhooks -u g33k -c webhooks=1
 ```
 
+### Allow a user to restart the service
+```
+export EDITOR=vi
+sudo visudo
+%user ALL=(ALL) NOPASSWD: /usr/sbin/service webhooks restart, /usr/sbin/service webhooks stop, /usr/sbin/service webhooks start
+
 ### Start service 
 ```
 sudo service webhooks start
@@ -58,8 +64,3 @@ sudo service webhooks start
 tail -f /var/log/webhooks/*
 ```
 
-## Allow a user to restart the service
-```
-export EDITOR=vi
-sudo visudo
-%user ALL=(ALL) NOPASSWD: /usr/sbin/service webhooks restart, /usr/sbin/service webhooks stop, /usr/sbin/service webhooks start
