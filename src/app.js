@@ -41,7 +41,7 @@ opts.version = version;
 
 // Setup logging
 winston.remove(winston.transports.Console);
-winston.add(winston.transports.Console, {colorize: true, level: opts.debug?'debug':null}); 
+winston.add(winston.transports.Console, {colorize: true, level: 'debug'}); 
 
 // Create a gith server on port process.env.PORT
 var gith = require('gith').create(opts.port) ;
