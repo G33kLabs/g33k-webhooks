@@ -71,13 +71,13 @@ gith().on( 'all', function( payload ) {
 
 		// Run
 		execute: function(next) {
-			winston.info('[>] Launch post-commit : '+postCommit); 
+			winston.info('[>] Launch post-commit : '+postCommit+'...'); 
 			var post_commit = spawn('/bin/sh', [postCommit]); 
 
 			// Pipe logs
 			post_commit.stdout.setEncoding('utf8');
-			post_commit.stdout.on('data', winston.debug);
 			post_commit.stderr.setEncoding('utf8');
+			post_commit.stdout.on('data', winston.debug);
 			post_commit.stderr.on('data', winston.debug);
 
 			// On close
