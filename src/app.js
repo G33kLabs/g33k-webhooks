@@ -6,6 +6,7 @@ var path = require('path')
   , find = require('findit')
   , version = pkg.version
   , exec = require('child_process').exec
+  , span = require('child_process').span
   , opts = require('optimist')
 	.usage('Usage: $0')
 	.options({
@@ -71,10 +72,25 @@ gith().on( 'all', function( payload ) {
 		// Run
 		execute: function(next) {
 			winston.info('[>] Launch post-commit : '+postCommit); 
+			var post_commit = spawn('/bin/sh', [postCommit]); 
+
+			post_commit.stdout.on('data', function (data) {
+				console.log('stdout: ' + data);
+			});
+
+			post_commit.stderr.on('data', function (data) {
+				console.log('stderr: ' + data);
+			});
+
+			post_commit.on('close', function (code) {
+				console.log('child process exited with code ' + code);
+			});
+/*
 			exec("/bin/sh " + postCommit, function(err, datas) {
 				console.log(err, datas) ;
 				next(err, datas);
 			});
+*/			
 		}
 	},
 
