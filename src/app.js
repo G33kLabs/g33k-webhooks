@@ -57,17 +57,36 @@ gith().on( 'all', function( payload ) {
 	winston.warn('[>] Post-commit happened!');
 	winston.info(JSON.stringify(payload, null, 4)); 
 
-	// Look if post-commit script exists
-	fs.exists('./repos/'+payload.repo+'/post-commit', function(exists) {
-		winston.info('post-commit script exists for '+payload.repo); 
+	// Set post-commit script path
+	var postCommit = './repos/'+payload.repo+'/post-commit';
 
-	}); 
+	// Find post-commit script and exec it
+	async.series({
 
-/*
-	// Exec post-receive script
-	exec(__dirname+"/trader-forex/post-receive", function(err, datas) {
-		console.log(err, datas) ;
-	}); 
-*/
+		// Search for post-commit script
+		exists: function(next) {
+			fs.exists(postCommit, function(exists) {
+				next(!exists, exists);
+			});
+		},
+
+		// Run
+		run: function(next) {
+			exec(postCommit, function(err, datas) {
+				console.log(err, datas) ;
+			});
+		}
+	},
+
+	// Response
+	function(err, success) {
+		if ( err.exists ) {
+			winston.error('No post-commit found for '+postCommit);
+		}
+		else {
+			winston.info('post-commit script exists for '+payload.repo); 
+		}
+	});
+
 
 });
