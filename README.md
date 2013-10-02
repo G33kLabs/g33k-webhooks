@@ -49,7 +49,7 @@ echo "PORT=9090" > /var/www/g33k-webhooks/.env
 ### Create Init Script
 ```
 cd /var/www/g33k-webhooks
-sudo foreman export upstart /etc/init -a webhooks -u g33k -c webhooks=1
+foreman export upstart /etc/init -a webhooks -u g33k -c webhooks=1
 ```
 
 ### Allow a user to restart the service without password
