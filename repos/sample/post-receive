@@ -1,0 +1,11 @@
+#!/bin/sh
+cd /var/www/sample-project
+unset GIT_DIR
+
+#@ Make a npm update
+echo "Update npm packages..."
+npm update
+
+#@ Refresh repo
+echo "Refresh repo..."
+git pull

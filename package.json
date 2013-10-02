@@ -1,0 +1,25 @@
+{
+	"name": "g33k-webhooks",
+	"version": "0.0.1",
+
+	"description": "Update Git repositary via WebHooks Server",
+
+	"dependencies": {
+		"async":     "x.x.x",
+		"underscore": "x.x.x",
+		"backbone": "x.x.x",
+		"colors": "x.x.x",
+		"optimist": "x.x.x",
+		"pkginfo": "x.x.x",
+		"winston": "x.x.x",
+		"findit": "x.x.x",
+		"gith": "x.x.x"
+	},
+
+	"main": "src/app.js",
+
+	"engines": {
+		"node": ">= 0.8.0"
+	}
+
+}
