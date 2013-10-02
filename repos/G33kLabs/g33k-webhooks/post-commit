@@ -2,13 +2,13 @@
 cd /var/www/g33k-webhooks
 unset GIT_DIR
 
-#@ Make a npm update
-echo "Update npm packages..."
-npm update > /dev/null 2>&1 
-
 #@ Refresh repo
 echo "Refresh repo..."
 git pull
+
+#@ Make a npm update
+echo "Update npm packages..."
+npm update > /dev/null 2>&1 
 
 #@ Restart app
 echo "Restart webhook server..."

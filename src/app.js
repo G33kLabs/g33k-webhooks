@@ -83,19 +83,13 @@ gith().on( 'all', function( payload ) {
 			// On close
 			post_commit.on('close', function (code) {
 				console.log('child process exited with code ' + code);
-			});
-/*
-			exec("/bin/sh " + postCommit, function(err, datas) {
-				console.log(err, datas) ;
-				next(err, datas);
-			});
-*/			
+				next(); 
+			});	
 		}
 	},
 
 	// Response
 	function(err, success) {
-		console.log(err, success)
 		if ( err ) {
 			winston.error(err);
 		}
