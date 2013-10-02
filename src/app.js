@@ -67,7 +67,7 @@ gith().on( 'all', function( payload ) {
 		// Search for post-commit script
 		exists: function(next) {
 			fs.exists(postCommit, function(exists) {
-				next(!exists);
+				next('No post-commit found for '+postCommit);
 			});
 		},
 
@@ -82,8 +82,8 @@ gith().on( 'all', function( payload ) {
 	// Response
 	function(err, success) {
 		console.log(err, success)
-		if ( err.exists ) {
-			winston.error('No post-commit found for '+postCommit);
+		if ( err ) {
+			winston.error(err);
 		}
 		else {
 			winston.info('post-commit script exists for '+payload.repo); 
