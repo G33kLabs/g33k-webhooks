@@ -39,7 +39,7 @@ node src/app.js -p 9090
 If you want to use foreman to run this package, you can specify listening port here.
 
 ```
-cat "PORT=9090" > /var/www/g33k-webhooks/.env
+echo "PORT=9090" > /var/www/g33k-webhooks/.env
 ```
 
 ### Create Init Script
