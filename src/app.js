@@ -74,14 +74,11 @@ gith().on( 'all', function( payload ) {
 			winston.info('[>] Launch post-commit : '+postCommit); 
 			var post_commit = spawn('/bin/sh', [postCommit]); 
 
-			post_commit.stdout.on('data', function (data) {
-				console.log('stdout: ' + data);
-			});
+			// Pipe logs
+			post_commit.stdout.on('data', winston.debug);
+			post_commit.stderr.on('data', winston.debug);
 
-			post_commit.stderr.on('data', function (data) {
-				console.log('stderr: ' + data);
-			});
-
+			// On close
 			post_commit.on('close', function (code) {
 				console.log('child process exited with code ' + code);
 			});
